@@ -1,6 +1,9 @@
 # VueShop
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is a Vue 3 application built with Vite.  
+In addition to the base setup, I integrated **Vue Router**, **Pinia**, **Firebase**, and **Axios** to create the project structure and functionality.
+
+## Recommended IDE Setup
 
 ## Recommended IDE Setup
 

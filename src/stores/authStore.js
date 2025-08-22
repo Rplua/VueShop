@@ -20,15 +20,18 @@ export const useAuthStore = defineStore('authStore', () => {
   const isAdmin = computed(() => role.value === ROLE_ADMIN)
 
   const initializedAuth = async () => {
-    onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        user.value = firebaseUser
-        await fetchUserRole(firebaseUser.uid)
-        initialized.value = true
-      }
-      if (!firebaseUser) {
-        clearUser()
-      }
+    return new Promise((resolve) => {
+      onAuthStateChanged(auth, async (firebaseUser) => {
+        if (firebaseUser) {
+          user.value = firebaseUser
+          await fetchUserRole(firebaseUser.uid)
+          initialized.value = true
+        }
+        if (!firebaseUser) {
+          clearUser()
+        }
+        resolve()
+      })
     })
   }
 
